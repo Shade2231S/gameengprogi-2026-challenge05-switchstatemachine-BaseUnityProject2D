@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "2a8f370c-0054-4479-84c5-80e4ae37dba8",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "5541def8-098a-45f5-986b-2f2adecc819d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": []
+        },
+        {
+            "name": "UI",
+            "id": "9f0c6b61-df74-4883-b89c-bcb1da2279a4",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "72e5565a-0e3a-43d9-99fe-1ec7d655d196",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "39c8981b-b83b-41ed-813b-2436d068012b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3070897c-b718-4cdc-8c12-9ae23b87a27e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

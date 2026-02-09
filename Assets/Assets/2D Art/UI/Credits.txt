@@ -1,0 +1,11 @@
+GameBackground1.png Source: https://www.freepik.com/free-vector/hand-drawn-video-game-background_40484389.htm#fromView=search&page=4&position=34&uuid=396727a7-bb5f-44ea-8543-9acbe0722582&query=Game+Background
+
+GameBackground2.png Source: https://www.freepik.com/free-vector/video-game-background-design_39758206.htm#fromView=image_search_similar&page=1&position=24&uuid=fc4cab78-6608-4d03-bf3f-ede1549da8e2&query=Game+Background
+- Arrow.png (Extracted from GameBackground2.png)
+- Coin.png (Extracted from GameBackground2.png)
+- Key.png (Extracted from GameBackground2.png)
+- GameBackground2_B (Extracted from GameBackground2.png)
+
+TitleScreen.png: Modified version of GameBackground2.png
+
+HeartIcon.png (modified from) :https://freesvg.org/orange-heart-with-thick-brown-border-vector-clip-art
