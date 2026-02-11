@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [DefaultExecutionOrder(-100)]
@@ -13,6 +14,9 @@ public class ServiceHub : MonoBehaviour
 
     // The static instance that makes this globally accessible
     public static ServiceHub Instance { get; private set; }
+    [Header("System Refrence")]
+    [SerializeField] public GameStateManager GameStateManager { get; set; }
+    [SerializeField] public UIManager UIManager { get; set; }
 
 
 
