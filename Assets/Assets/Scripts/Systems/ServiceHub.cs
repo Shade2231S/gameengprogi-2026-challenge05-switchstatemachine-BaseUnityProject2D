@@ -15,12 +15,13 @@ public class ServiceHub : MonoBehaviour
     // The static instance that makes this globally accessible
     public static ServiceHub Instance { get; private set; }
     [Header("System Refrence")]
-    [SerializeField] public GameStateManager GameStateManager { get; set; }
-    [SerializeField] public UIManager UIManager { get; set; }
+    [SerializeField] public GameStateManager gameStateManager { get; set; }
+    [SerializeField] public UIManager uIManager { get; set; }
 
 
 
-
+    public GameStateManager gamestate => gameStateManager;
+    public UIManager uiman => uIManager;
 
     private void Awake()
     {
