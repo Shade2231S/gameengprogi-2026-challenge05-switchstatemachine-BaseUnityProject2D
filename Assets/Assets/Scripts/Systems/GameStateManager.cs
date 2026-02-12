@@ -16,7 +16,7 @@ public class GameStateManager : MonoBehaviour
     }
     public GameState currentState { get; private set; }
     public GameState previousState { get; private set; }
-    [Header("Debug Only")]
+    [Header("Debug (Read Only)")]
     [SerializeField] private string currentActiveState;
     [SerializeField] private string previousActiveState;
     private void Start()
@@ -30,8 +30,8 @@ public class GameStateManager : MonoBehaviour
         if (currentState == newstate) return;
         previousState = currentState;
         currentState = newstate;
-        previousActiveState = currentActiveState.ToString();
-        currentActiveState = previousActiveState.ToString();
+        previousActiveState = currentState.ToString();
+        currentActiveState = previousState.ToString();
         OnGameStateChanged(previousState, currentState);
     }
     public void OnGameStateChanged(GameState previousstate,GameState newstate)
@@ -42,27 +42,26 @@ public class GameStateManager : MonoBehaviour
                 Debug.Log("this should not show up");
                     return;
             case GameState.Init:
+                Debug.Log("Changed to Init");
                 Time.timeScale = 0;
                 SetState(GameState.MainMenu);
-
-                Debug.Log("Changed to Init");
              break;
             case GameState.MainMenu:
+                Debug.Log("Changed to MainMenu");
                 Time.timeScale = 0;
                 UImanager.ShowMainMenu();
-
-                Debug.Log("Changed to MainMenu");
              break;
             case GameState.Gameplay:
+                Debug.Log("Changed to Gameplay");    
                 Time.timeScale = 1;
                 UImanager.ShowGameplayUI();
-                Debug.Log("Changed to Gameplay");         
+                SetState(GameState.Gameplay);
              break;
             case GameState.PauseMenu:
+                Debug.Log("Changed to Paused");
                 Time.timeScale = 0;
                 UImanager.ShowPausedUI();
-
-                Debug.Log("Changed to PauseMenu");
+                SetState(GameState.PauseMenu);
              break;
             default:
              break;
@@ -91,10 +90,12 @@ public class GameStateManager : MonoBehaviour
     }
     public void StartGame()
     {
+        Debug.Log("Started");
         SetState(GameState.Gameplay);
     }
     public void Pause()
     {
+        Debug.Log("Paused");
         if(currentState == GameState.PauseMenu)
         {
             if (currentState == GameState.Gameplay) return;

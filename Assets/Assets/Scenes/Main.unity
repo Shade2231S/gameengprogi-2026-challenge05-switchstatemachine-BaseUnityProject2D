@@ -1662,7 +1662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056bc34f212e80a488d6131984c12d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
   currentActiveState: 
   previousActiveState: 
 --- !u!4 &734293941
@@ -1706,10 +1705,14 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5541def8-098a-45f5-986b-2f2adecc819d
+    m_ActionName: Player/Move
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 734293940}
         m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
-        m_MethodName: Pause
+        m_MethodName: Update
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1719,10 +1722,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5541def8-098a-45f5-986b-2f2adecc819d
-    m_ActionName: Player/Move
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 72e5565a-0e3a-43d9-99fe-1ec7d655d196
     m_ActionName: 'UI/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -2816,7 +2815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942886816}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 987.27966, y: 553.39136, z: 4.0924144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5342,6 +5341,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1028561336}
-  - {fileID: 942886817}
   - {fileID: 734293941}
+  - {fileID: 942886817}
   - {fileID: 474713834}
