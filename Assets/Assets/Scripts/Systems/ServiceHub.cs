@@ -16,7 +16,7 @@ public class ServiceHub : MonoBehaviour
     public static ServiceHub Instance { get; private set; }
     [Header("System Refrence")]
     public GameStateManager gameStateManager;
- public UIManager uIManager; 
+    public UIManager uIManager; 
 
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class GameStateManager : MonoBehaviour
         Init,
         MainMenu,
         Gameplay,
-        PauseMenu
+        PauseMenu,
+        GameOver,
+        Options
     }
-    public GameState currentState { get; private set; }
     public GameState previousState { get; private set; }
+    public GameState currentState { get; private set; }
     [Header("Debug (Read Only)")]
     [SerializeField] private string currentActiveState;
     [SerializeField] private string previousActiveState;
@@ -30,9 +33,9 @@ public class GameStateManager : MonoBehaviour
         if (currentState == newstate) return;
         previousState = currentState;
         currentState = newstate;
-        previousActiveState = currentState.ToString();
-        currentActiveState = previousState.ToString();
-        OnGameStateChanged(previousState, currentState);
+        previousActiveState = previousState.ToString();
+        currentActiveState = currentState.ToString();
+        OnGameStateChanged(currentState, currentState);
     }
     public void OnGameStateChanged(GameState previousstate,GameState newstate)
     {
@@ -55,37 +58,34 @@ public class GameStateManager : MonoBehaviour
                 Debug.Log("Changed to Gameplay");    
                 Time.timeScale = 1;
                 UImanager.ShowGameplayUI();
-                SetState(GameState.Gameplay);
              break;
             case GameState.PauseMenu:
                 Debug.Log("Changed to Paused");
                 Time.timeScale = 0;
                 UImanager.ShowPausedUI();
-                SetState(GameState.PauseMenu);
              break;
+            case GameState.GameOver:
+                Debug.Log("Changed to GameOver");
+                Time.timeScale = 0;
+                UImanager.ShowGameOverUI();
+               break;
+            case GameState.Options:
+                Time.timeScale = 0;
+                UImanager.ShowOptionsUi();
+               break;
             default:
              break;
         }
     }
     public void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(currentState == GameState.MainMenu)
-            {
-                SetState(GameState.Gameplay);
-                    return;
-            }
-            else if(currentState == GameState.Gameplay)
-            {
-                SetState(GameState.PauseMenu);
-                   return;
-            }
-            else if(currentState == GameState.PauseMenu)
-            {
-                SetState(GameState.Init);
-                  return;
-            }
+            SetGameOver();
         }
     }
     public void StartGame()
@@ -93,19 +93,49 @@ public class GameStateManager : MonoBehaviour
         Debug.Log("Started");
         SetState(GameState.Gameplay);
     }
-    public void Pause()
+    public void SetGameOver()
     {
-        Debug.Log("Paused");
+        if(currentState != GameState.Gameplay)
+        {
+
+        }
+        else if(currentState == GameState.Gameplay)
+        {
+            Debug.Log("GameOver");
+            SetState(GameState.GameOver);
+        }
+    }
+    public void TogglePause()
+    {
         if(currentState == GameState.PauseMenu)
         {
+            Debug.Log("UnPaused");
             if (currentState == GameState.Gameplay) return;
             SetState(GameState.Gameplay);
         }
         else if( currentState == GameState.Gameplay) 
         {
+            Debug.Log("Paused");
             if (currentState == GameState.PauseMenu) return;
             SetState(GameState.PauseMenu);
         }
-
+    }
+    public void BackButton()
+    {
+        SetState(previousState);
+    }
+    public void MainMenu()
+    {
+        Debug.Log("MainMenu");
+        SetState(GameState.MainMenu);
+    }
+    public void OptionsButton()
+    {
+        SetState(GameState.Options);
+    }
+    public void quit()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }
